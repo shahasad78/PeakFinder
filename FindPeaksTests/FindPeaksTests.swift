@@ -39,12 +39,15 @@ class FindPeaksTests: XCTestCase {
             results2 = findPeaksByTwos([1,2,1,2,1,3,2,4,3,3,2,4,5,6,5,6,7,8,9,10,9,7,8,9,9,9,11,15,12,13,10,100,90,10,80,90,100,110,130,110,200,220,210,100,150,90,1000,900,800,540,220,115,100,900,910])
         }
         print(results2)
-        XCTAssert(results2 == [2,2,3,4,6,10,15,13,100,130,220,150,1000], "Test Failed: Error finding peaks using findByTwos")
+        XCTAssert(results2 == [2,2,3,4,6,10,15,13,100,130,220,150,1000], "Test Failed: Error finding peaks using peaksByTwos")
     }
 
-//    func testPeaksByOnes() {
-//        self.measureBlock{
-//            findPeaksByOnes([1,2,1,2,1,3,2,4,3,3,2,4,5,6,5,6,7,8,9,10,9,7,8,9,9,9,11,15,12,13,10,100,90,10,80,90,100,110,130,110,200,220,210,100,150,90,1000,900,800,540,220,115,100,900,910])
-//        }
-//    }
+    func testPeaksByOnes() {
+        var results3: [Int] = []
+        self.measureBlock{
+            results3 = findPeaksByOnes([1,2,1,2,1,3,2,4,3,3,2,4,5,6,5,6,7,8,9,10,9,7,8,9,9,9,11,15,12,13,10,100,90,10,80,90,100,110,130,110,200,220,210,100,150,90,1000,900,800,540,220,115,100,900,910])
+        }
+        print(results3)
+        XCTAssert(results3 == [2,2,3,4,6,10,15,13,100,130,220,150,1000], "Test Failed: Error finding peaks using peaksByOnes")
+    }
 }
