@@ -10,6 +10,8 @@ import XCTest
 @testable import FindPeaks
 
 class FindPeaksTests: XCTestCase {
+
+
     
     override func setUp() {
         super.setUp()
@@ -21,16 +23,28 @@ class FindPeaksTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
+    func testPeakFinder() {
+        let array1 = [1,2,1,2,1,3,2,4,3,3,2,4,5,6,5,6,7,8,9,10,9,7,8,9,9,9,11,15,12,13,10,100,90,10,80,90,100,110,130,110,200,220,210,100,150,90,1000,900,800,540,220,115,100,900,910]
+        var results1: [Int] = []
         self.measureBlock {
-            // Put the code you want to measure the time of here.
+            results1 = array1.findPeaks()
         }
+        XCTAssert(results1 == [2,2,3,4,6,10,15,13,100,130,220,150,1000], "Test failed: Error finding peaks using generic algorithm")
+
     }
-    
+
+    func testPeaksByTwos() {
+        var results2: [Int] = []
+        self.measureBlock {
+            results2 = findPeaksByTwos([1,2,1,2,1,3,2,4,3,3,2,4,5,6,5,6,7,8,9,10,9,7,8,9,9,9,11,15,12,13,10,100,90,10,80,90,100,110,130,110,200,220,210,100,150,90,1000,900,800,540,220,115,100,900,910])
+        }
+        print(results2)
+        XCTAssert(results2 == [2,2,3,4,6,10,15,13,100,130,220,150,1000], "Test Failed: Error finding peaks using findByTwos")
+    }
+
+//    func testPeaksByOnes() {
+//        self.measureBlock{
+//            findPeaksByOnes([1,2,1,2,1,3,2,4,3,3,2,4,5,6,5,6,7,8,9,10,9,7,8,9,9,9,11,15,12,13,10,100,90,10,80,90,100,110,130,110,200,220,210,100,150,90,1000,900,800,540,220,115,100,900,910])
+//        }
+//    }
 }
